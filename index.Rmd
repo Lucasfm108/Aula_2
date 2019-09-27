@@ -452,7 +452,6 @@ jn1 <- mutate(jn, med_func= (g10a+g10b+g10c+g10d)/4)
 
 jn1 <- mutate(jn, mag_serv= (g10a/g10b), serv_terc=(g10b/g10c), terc_est=(g10c/g10d))
 jn1 %>% filter (ano==2017, justica=="Estadual") %>% select(3,13,14,15) %>%  head(n=5)
-
 ```
 
 # Summarise()
@@ -555,6 +554,53 @@ jn1 <- group_by(jn1, justica, regiao)
 jn1 <- summarise(jn1, med_venc=mean(g10b, na.rm=T))
 jn1 <- arrange(jn1, desc(med_venc), justica, regiao)
 jn1
+```
+
+# Join
+
+## Unindo Tabelas por chaves (keys)
+
+&nbsp;
+&nbsp;
+
+Em várias ocasiões as informações de que precisamos estão divididas em duas ou mais tabelas, que possuem em comum apenas uma única variável (chave)
+
+<div style="float: left; width: 50%;">
+
+<center><img src="jn1.png" width = "100%" height="700px" /></center>
+
+</div>
+
+
+<div style="float: right; width: 50%;">
+
+<center><img src="jn2.png" width = "100%" height="700px" /></center>
+
+</div>
+
+
+## Left join
+
+&nbsp;
+&nbsp;
+
+Se o nosso objetivo é obter todas as colunas da tabela 2, cujos IDs também existem na tabela 1, devemos usar o left-join:
+
+&nbsp;
+&nbsp;
+
+```{r}
+# Importar as duas bases que serão unidas
+
+jn1 <- import("jn1.xlsx")
+jn2 <- import("jn2.xlsx")
+
+# Executar a função left join
+
+jn3 <- left_join(x=jn1, y=jn2, by=c("ID"="ID")) #Usar o argumento "by" quando as chaves não possuírem o mesmo nome
+
+jn3 <- left_join(x=jn1, y=jn2) #Se as chaves possuem o mesmo nome, o "by" é desnecessário
+
 ```
 
 # Bônus: pipe %>% 
