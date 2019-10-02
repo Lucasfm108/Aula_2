@@ -27,9 +27,9 @@ library(rio)
 &nbsp;
 &nbsp;
 
-O R possui uma série de funções que já vêm junto com a sua instalação, como a mean(), seq(), round(), c(), data.frame() e as demais já utilizadas. 
+O R possui uma série de funções pré-instaladas, como a mean(), seq(), round(), c(), data.frame() e as demais já utilizadas. 
 
-Para utilizar outras funções além dessas, é preciso instalar pacotes ou bibliotecas e carregá-las.
+Para utilizar outras funções, é preciso instalar pacotes ou bibliotecas e carregá-las.
 
 &nbsp;
 &nbsp;
@@ -55,7 +55,7 @@ Existem duas formas de se utilizar as funções dos pacotes.
 &nbsp;
 &nbsp;
 
-* A primeira delas já foi explicada. Basta instalar e carregar o pacote que as funções já podem ser imediatamente utilizadas. 
+* A primeira delas já foi explicada. Basta instalar e carregar o pacote para que as funções possam ser utilizadas. 
 
 * A segunda é utilizando o nome do pacote seguido de dois pontos duplicados -> dplyr:: OU rio::
 
@@ -556,7 +556,7 @@ jn1 <- arrange(jn1, desc(med_venc), justica, regiao)
 jn1
 ```
 
-# Join
+# join()
 
 ## Unindo Tabelas por chaves (keys)
 
@@ -612,7 +612,7 @@ jn3 <- left_join(x=jn1, y=jn2) #Se as chaves possuem o mesmo nome, o "by" é desn
 
 Em várias situações, precisaremos utilizar várias funções para completar um único objetivo: média de salário dos serviores por região, por exemplo. 
 
-Para evitar termos que criar vários objetos ou sobrescrever um deles várias vezes, podemos aninhar funções.
+Para evitar a criação de vários objetos ou sobrescrever um deles várias vezes, podemos aninhar funções.
 
 ```{r}
 #Calcular a média da proporção de salários dos magistrados em relação aos servidores por região em 2018
